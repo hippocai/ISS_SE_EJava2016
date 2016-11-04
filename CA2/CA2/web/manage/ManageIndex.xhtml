@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:commandButton value="Add New Notes" action="#{notesView.toNewPage()}"/>
+            <h:commandButton value="Logout" action="#{notesView.logout()}"/>
+        </h:form>	
+       
+        <h:dataTable var="note" value="#{notesView.getAllMyNotes()}">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                #{note.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Title</f:facet>
+                #{note.title}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Date Time</f:facet>
+                #{note.getDateString()}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Category</f:facet>
+                #{note.category}
+             </h:column>
+             <h:column>
+                <f:facet name="header">Content</f:facet>
+                #{note.content}
+            </h:column>
+            <f:facet name="caption">All My Notes</f:facet>
+        </h:dataTable>
+    </h:body>
+</html>
