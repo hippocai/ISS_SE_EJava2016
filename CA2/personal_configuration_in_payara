@@ -1,0 +1,22 @@
+<!-- Connection Pool For Auth -->
+<jdbc-connection-pool driver-classname="com.mysql.jdbc.Driver" name="auth_pool" res-type="java.sql.Driver">
+      <property name="password" value="1993812"></property>
+      <property name="user" value="root"></property>
+      <property name="URL" value="jdbc:mysql://localhost:3306/noticeboarddb"></property>
+    </jdbc-connection-pool>
+<jdbc-resource pool-name="auth_pool" jndi-name="auth_resource"></jdbc-resource>
+ 
+ 
+ <!--Auth Realm-->
+ <auth-realm classname="com.sun.enterprise.security.auth.realm.jdbc.JDBCRealm" name="auth_realm">
+          <property name="jaas-context" value="jdbcRealm"></property>
+          <property name="password-column" value="password"></property>
+          <property name="datasource-jndi" value="auth_resource"></property>
+          <property name="group-table" value="user_group"></property>
+          <property name="user-table" value="users"></property>
+          <property name="group-name-column" value="group_name"></property>
+          <property name="digestrealm-password-enc-algorithm" value="AES"></property>
+          <property name="group-table-user-name-column" value="user_name"></property>
+          <property name="digest-algorithm" value="SHA-256"></property>
+          <property name="user-name-column" value="user_name"></property>
+</auth-realm>
